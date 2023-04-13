@@ -8,7 +8,7 @@ import com.example.rickmortygraphql.R
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
 
-    private var characters = mutableListOf<CharactersQuery>()
+    private var characters = mutableListOf<CharactersQuery.Result?>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         CharacterViewHolder(
@@ -21,8 +21,8 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
         holder.render(characters[position])
     }
 
-    fun updateDataSet(charactersUpdated: MutableList<CharactersQuery>) {
-        characters = charactersUpdated
+    fun updateDataSet(charactersUpdated: List<CharactersQuery.Result?>) {
+        characters = charactersUpdated.toMutableList()
         notifyDataSetChanged()
     }
 }

@@ -1,10 +1,9 @@
 package com.example.rickmortygraphql.ui.home.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickmortygraphql.databinding.FragmentHomeBinding
 import com.example.rickmortygraphql.ui.base.BaseFragment
 import com.example.rickmortygraphql.ui.home.view.adapter.CharacterAdapter
@@ -29,11 +28,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun setAdapter() {
         adapter = CharacterAdapter()
+        binding.homeCharacterRecycler.layoutManager = LinearLayoutManager(context)
+        binding.homeCharacterRecycler.adapter = adapter
     }
 
     private fun setObservers() {
         viewModel.characters.observe(viewLifecycleOwner) {
-            Log.i("Response", it.toString())
+            adapter?.updateDataSet(it)
         }
     }
 }
