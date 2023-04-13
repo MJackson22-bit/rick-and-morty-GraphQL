@@ -1,5 +1,6 @@
 package com.example.rickmortygraphql.ui.home.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
         holder.render(characters[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateDataSet(charactersUpdated: List<CharactersQuery.Result?>) {
         characters = charactersUpdated.toMutableList()
         notifyDataSetChanged()

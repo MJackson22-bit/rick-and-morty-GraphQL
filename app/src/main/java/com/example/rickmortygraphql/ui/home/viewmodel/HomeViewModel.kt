@@ -22,6 +22,4 @@ class HomeViewModel @Inject constructor(
             _characters.postValue(characterRepository.getCharacter())
         }
     }
-
-
 }
